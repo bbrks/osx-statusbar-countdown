@@ -29,9 +29,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func tick() {
         let now = NSDate()
-        let diff = Int(countToDate.timeIntervalSinceDate(now))
-
-        statusItem.title = countdownName + ": " + String(diff)
+        var diff = secondsToHoursMinutesSeconds(countToDate.timeIntervalSinceDate(now))
+    
+        statusItem.title = countdownName + ": " + formatHMS(diff)
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Double) -> (Double, Double, Double) {
+        let (hr,  minf) = modf (seconds / 3600)
+        let (min, secf) = modf (60 * minf)
+        return (hr, min, 60 * secf)
+    }
+    
+    func formatHMS(hmsTuple: (Double, Double, Double)) -> (String) {
+        return String(Int(hmsTuple.0)) + "h " + String(Int(hmsTuple.1)) + "m " + String(Int(hmsTuple.2)) + "s"
     }
 
     @IBAction func quitApplication(sender: NSMenuItem) {
