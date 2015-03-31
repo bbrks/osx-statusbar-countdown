@@ -10,18 +10,24 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet weak var window: NSWindow!
-
-
+    
+    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+    @IBOutlet weak var statusMenu: NSMenu!
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        
+        statusItem.title = "Countdown"
+        statusItem.menu = statusMenu
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
 
+    @IBAction func quitApplication(sender: NSMenuItem) {
+        NSApplication.sharedApplication().terminate(self);
+    }
 
 }
 

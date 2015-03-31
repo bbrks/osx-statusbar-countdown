@@ -393,6 +393,7 @@
 				B57B8F641ACB590D00BD794F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B57B8F651ACB590D00BD794F /* Build configuration list for PBXNativeTarget "StatusbarCountdownTests" */ = {
 			isa = XCConfigurationList;
@@ -401,6 +402,7 @@
 				B57B8F671ACB590D00BD794F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
