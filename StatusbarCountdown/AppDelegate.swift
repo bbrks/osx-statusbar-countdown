@@ -11,14 +11,17 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var showName = true
-    
+    // TODO: Remove these hardcoded values (into a plist)
+    // TODO: Provide a GUI config to set plist values
     let countToDate = NSDate(timeIntervalSince1970: 1431000000)
     let countdownName = "Diss"
+    
+    var showName = true
 
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
     @IBOutlet weak var statusMenu: NSMenu!
 
+    // Function runs when application has launched
     func applicationDidFinishLaunching(aNotification: NSNotification) {
 
         statusItem.title = ""
@@ -29,9 +32,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     }
 
+    // Calculates the difference in time from now to the specified date and sets the statusItem title
     func tick() {
-        let now = NSDate()
-        var diff = secondsToTime(Int(countToDate.timeIntervalSinceDate(now)))
+        var diff = secondsToTime(Int(countToDate.timeIntervalSinceNow))
         
         if (showName) {
             statusItem.title = countdownName + ": " + formatTime(diff)
@@ -41,37 +44,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     }
     
+    // Convert seconds to 5 Time integers (years, days, hours minutes and seconds)
     func secondsToTime (seconds : Int) -> (Int, Int, Int, Int, Int) {
-        
-        var forYears = seconds / (3600 * 24 * 365)
+        var years = seconds / (3600 * 24 * 365)
         var remainder = seconds % (3600 * 24 * 365)
         
-        var forDays = remainder / (3600 * 24)
+        var days = remainder / (3600 * 24)
         remainder = remainder % (3600 * 24)
         
-        var forHours = remainder / 3600
+        var hours = remainder / 3600
         remainder = remainder % 3600
         
-        var forMinutes = remainder / 60
-        var forSeconds = remainder % 60
+        var minutes = remainder / 60
         
-        let s = forSeconds
-        let m = forMinutes
-        let h = forHours
-        let d = forDays
-        let y = forYears
-        return (y, d, h, m, s)
+        var seconds = remainder % 60
+        
+        return (years, days, hours, minutes, seconds)
     }
     
+    // Convert 5 Time integers (years, days, hours minutes and seconds) to a string.
+    // Display trailing zeros if required, otherwise trim.
     func formatTime(time: (Int, Int, Int, Int, Int)) -> (String) {
-        let y = (time.0 > 0) ? String(time.0) + "y " : ""
-        let d = (time.1 > 0 || time.0 > 0) ? String(time.1) + "d " : ""
-        let h = (time.2 > 0 || time.1 > 0 || time.0 > 0) ? String(time.2) + "h " : ""
-        let m = (time.3 > 0 || time.2 > 0 || time.1 > 0 || time.0 > 0) ? String(time.3) + "m " : ""
-        let s = String(time.4) + "s"
-        return y + d + h + m + s
+        let years   = (time.0 > 0)                                           ? String(time.0) + "y " : ""
+        let days    = (time.1 > 0 || time.0 > 0)                             ? String(time.1) + "d " : ""
+        let hours   = (time.2 > 0 || time.1 > 0 || time.0 > 0)               ? String(time.2) + "h " : ""
+        let minutes = (time.3 > 0 || time.2 > 0 || time.1 > 0 || time.0 > 0) ? String(time.3) + "m " : ""
+        let seconds = String(time.4) + "s"
+        return years + days + hours + minutes + seconds
     }
 
+    // MenuItem click event to toggle showName
     @IBAction func toggleShowName(sender: NSMenuItem) {
         if (showName) {
             showName = false
@@ -82,6 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    // MenuItem click event to quit application
     @IBAction func quitApplication(sender: NSMenuItem) {
         NSApplication.sharedApplication().terminate(self);
     }
