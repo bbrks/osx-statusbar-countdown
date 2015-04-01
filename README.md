@@ -6,9 +6,9 @@ A utility to count down to a date from your OS X menubar/statusbar written in Sw
 ## Installation
 Download the binary package from [Releases](https://github.com/bbrks/osx-statusbar-countdown/releases) and run.
 
-If you encounter issues regarding unknown developers, Ctrl+Click on the .app and then click Open.
+If you encounter issues regarding unknown developer, Ctrl+Click on the .app and then click Open.
 
-Alternatively, download the repo and compile in Xcode :)
+Alternatively, clone the repo and compile in Xcode :)
 
 ## Roadmap
 
