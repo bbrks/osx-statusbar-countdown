@@ -19,14 +19,21 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="Bb0-bb-uo1">
             <items>
-                <menuItem title="Quit" id="ymR-mC-yG2">
+                <menuItem title="Show Name" state="on" id="ymR-mC-yG2">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="quitApplication:" target="Voe-Tx-rLC" id="rt4-Zt-Bs1"/>
+                        <action selector="toggleShowName:" target="Voe-Tx-rLC" id="KcE-2e-FUm"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="DWl-xP-vrW"/>
+                <menuItem title="Quit" id="SeC-Z9-3ew">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quitApplication:" target="Voe-Tx-rLC" id="mN1-pc-Wio"/>
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="136" y="167.5"/>
+            <point key="canvasLocation" x="-303" y="94.5"/>
         </menu>
     </objects>
 </document>
