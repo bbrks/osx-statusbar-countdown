@@ -25,6 +25,12 @@
                         <action selector="toggleShowName:" target="Voe-Tx-rLC" id="KcE-2e-FUm"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Show Seconds" state="on" id="ccT-bc-F58">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleShowSeconds:" target="Voe-Tx-rLC" id="TQH-RY-3Ql"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="DWl-xP-vrW"/>
                 <menuItem title="Quit" id="SeC-Z9-3ew">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -33,7 +39,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-303" y="94.5"/>
+            <point key="canvasLocation" x="-487.5" y="38.5"/>
         </menu>
     </objects>
 </document>

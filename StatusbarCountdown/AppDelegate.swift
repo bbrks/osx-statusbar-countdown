@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let countdownName = "Diss"
     
     var showName = true
+    var showSeconds = true
 
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
     @IBOutlet weak var statusMenu: NSMenu!
@@ -68,11 +69,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let years   = (time.0 > 0)                                           ? String(time.0) + "y " : ""
         let days    = (time.1 > 0 || time.0 > 0)                             ? String(time.1) + "d " : ""
         let hours   = (time.2 > 0 || time.1 > 0 || time.0 > 0)               ? String(time.2) + "h " : ""
-        let minutes = (time.3 > 0 || time.2 > 0 || time.1 > 0 || time.0 > 0) ? String(time.3) + "m " : ""
-        let seconds = String(time.4) + "s"
+        let minutes = (time.3 > 0 || time.2 > 0 || time.1 > 0 || time.0 > 0) ? String(time.3) + "m" : ""
+        let seconds = (showSeconds) ? " " + String(time.4) + "s" : ""
         return years + days + hours + minutes + seconds
     }
-
+    
+    // MenuItem click event to toggle showSeconds
+    @IBAction func toggleShowSeconds(sender: NSMenuItem) {
+        if (showSeconds) {
+            showSeconds = false
+            sender.state = NSOffState
+        } else {
+            showSeconds = true
+            sender.state = NSOnState
+        }
+    }
+    
     // MenuItem click event to toggle showName
     @IBAction func toggleShowName(sender: NSMenuItem) {
         if (showName) {
