@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // TODO: Remove these hardcoded values (into a plist)
     // TODO: Provide a GUI config to set plist values
-    let countToDate = NSDate(timeIntervalSince1970: 1431000000)
+    let countToDate = NSDate(timeIntervalSince1970: 1431086400)
     let countdownName = "Diss"
     
     var showName = true
