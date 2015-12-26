@@ -27,8 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.title = ""
         statusItem.menu = statusMenu
 
-        NSTimer.scheduledTimerWithTimeInterval(0, target: self, selector: "tick", userInfo: nil, repeats: true)
-
+        NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "tick", userInfo: nil, repeats: true)
     }
 
     // Calculates the difference in time from now to the specified date and sets the statusItem title
