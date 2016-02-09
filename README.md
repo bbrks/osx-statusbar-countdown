@@ -1,4 +1,7 @@
 # OS X Statusbar Countdown
+
+**Deprecated:** Use [BitBar](https://getbitbar.com) with [Countdown plugin](https://getbitbar.com/plugins/Time/countdown.1s.py) instead.
+
 A utility to count down to a date from your OS X menubar/statusbar written in Swift.
 
 <img src="http://i.imgur.com/PDQb7VR.png" width="452" alt="OS X Statusbar Countdown" />
