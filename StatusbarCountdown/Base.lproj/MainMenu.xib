@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -23,26 +23,26 @@
                 <menuItem title="Show Name" state="on" id="ymR-mC-yG2">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="toggleShowName:" target="Voe-Tx-rLC" id="KcE-2e-FUm"/>
+                        <action selector="toggleShowNameWithSender:" target="Voe-Tx-rLC" id="eZS-dp-hK7"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Show Seconds" state="on" id="ccT-bc-F58">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="toggleShowSeconds:" target="Voe-Tx-rLC" id="TQH-RY-3Ql"/>
+                        <action selector="toggleShowSecondsWithSender:" target="Voe-Tx-rLC" id="mUa-3b-0vF"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Leading Zeros" id="euL-WY-OeU">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="toggleZeroPad:" target="Voe-Tx-rLC" id="QtI-CQ-TjP"/>
+                        <action selector="toggleZeroPadWithSender:" target="Voe-Tx-rLC" id="Ipf-z6-8Z2"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="DWl-xP-vrW"/>
                 <menuItem title="Quit" id="SeC-Z9-3ew">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="quitApplication:" target="Voe-Tx-rLC" id="mN1-pc-Wio"/>
+                        <action selector="quitApplicationWithSender:" target="Voe-Tx-rLC" id="duD-UV-duL"/>
                     </connections>
                 </menuItem>
             </items>

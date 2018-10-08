@@ -21,21 +21,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var showSeconds = true
     var zeroPad = false
 
-    var formatter = NSNumberFormatter()
+    var formatter = NumberFormatter()
 
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+    let statusItem = NSStatusBar.system.statusItem(withLength: -1)
     @IBOutlet weak var statusMenu: NSMenu!
-
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem.title = ""
         statusItem.menu = statusMenu
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
 
-        NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "tick", userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.25,
+                             target: self,
+                             selector: #selector(tick),
+                             userInfo: nil,
+                             repeats: true)
     }
 
     // Calculates the difference in time from now to the specified date and sets the statusItem title
-    func tick() {
+    @objc func tick() {
         let diff = Int(countToDate.timeIntervalSinceNow)
         
         if (showName) {
@@ -47,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // Convert seconds to 4 Time integers (days, hours minutes and seconds)
-    func secondsToTime (seconds : Int) -> (Int, Int, Int, Int) {
+    func secondsToTime (_ seconds : Int) -> (Int, Int, Int, Int) {
         let days = seconds / (3600 * 24)
         var remainder = seconds % (3600 * 24)
         
@@ -62,12 +66,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // Display seconds as Days, Hours, Minutes, Seconds.
-    func formatTime(time: Int) -> (String) {
+    func formatTime(_ time: Int) -> (String) {
         let time = secondsToTime(time)
-        let days    = (time.0 > 0)                             ? String(time.0) + "d " : ""
-        let hours   = (time.1 > 0 || time.0 > 0)               ? formatter.stringFromNumber(time.1)! + "h " : ""
-        let minutes = (time.2 > 0 || time.1 > 0 || time.0 > 0) ? formatter.stringFromNumber(time.2)! + "m" : ""
-        let seconds = (showSeconds) ? " " + formatter.stringFromNumber(time.3)! + "s" : ""
+        let days    = (time.0 > 0) ? String(time.0) + "d " : ""
+        let hours   = (time.1 > 0 || time.0 > 0)               ? formatter.string(from: NSNumber(value: time.1))! + "h " : ""
+        let minutes = (time.2 > 0 || time.1 > 0 || time.0 > 0) ? formatter.string(from: NSNumber(value: time.2))! + "m" : ""
+        let seconds = (showSeconds) ? " " + formatter.string(from: NSNumber(value: time.3))! + "s" : ""
         return days + hours + minutes + seconds
     }
 
@@ -75,10 +79,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func toggleShowSeconds(sender: NSMenuItem) {
         if (showSeconds) {
             showSeconds = false
-            sender.state = NSOffState
+            sender.state = .off
         } else {
             showSeconds = true
-            sender.state = NSOnState
+            sender.state = .on
         }
     }
 
@@ -86,10 +90,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func toggleShowName(sender: NSMenuItem) {
         if (showName) {
             showName = false
-            sender.state = NSOffState
+            sender.state = .off
         } else {
             showName = true
-            sender.state = NSOnState
+            sender.state = .on
         }
     }
 
@@ -97,17 +101,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func toggleZeroPad(sender: NSMenuItem) {
         if (zeroPad) {
             zeroPad = false
-            sender.state = NSOffState
+            sender.state = .off
         } else {
             zeroPad = true
-            sender.state = NSOnState
+            sender.state = .on
         }
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
     }
 
     // MenuItem click event to quit application
     @IBAction func quitApplication(sender: NSMenuItem) {
-        NSApplication.sharedApplication().terminate(self);
+        NSApplication.shared.terminate(self);
     }
 
 }
