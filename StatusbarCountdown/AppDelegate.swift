@@ -11,11 +11,11 @@ import Foundation
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+
     // TODO: Remove these hardcoded values (into a plist)
     // TODO: Provide a GUI config to set plist values
-    let countToDate = NSDate(timeIntervalSince1970: 1531086400)
-    let countdownName = "Diss"
+    let countToDate = NSDate(timeIntervalSince1970: 1597249800) // FIXME: Your countdown date here... - 2020-08-04 16:30:00 UTC
+    let countdownName = "Countdown Name"                        // FIXME: Your countdown name here...
     
     var showName = true
     var showSeconds = true
@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = statusMenu
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
 
-        Timer.scheduledTimer(timeInterval: 0.25,
+        Timer.scheduledTimer(timeInterval: 0.16, // 16ms ~ 60fps
                              target: self,
                              selector: #selector(tick),
                              userInfo: nil,
@@ -40,13 +40,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // Calculates the difference in time from now to the specified date and sets the statusItem title
     @objc func tick() {
-        let diff = Int(countToDate.timeIntervalSinceNow)
+        let diffSeconds = Int(countToDate.timeIntervalSinceNow)
         
-        if (showName) {
-            statusItem.title = countdownName + ": " + formatTime(diff)
-        } else {
-            statusItem.title = formatTime(diff)
-        }
+        statusItem.title = (showName) ? countdownName + ": " : ""
+        statusItem.title! += formatTime(diffSeconds)
     
     }
     
@@ -66,13 +63,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // Display seconds as Days, Hours, Minutes, Seconds.
-    func formatTime(_ time: Int) -> (String) {
-        let time = secondsToTime(time)
-        let days    = (time.0 > 0) ? String(time.0) + "d " : ""
-        let hours   = (time.1 > 0 || time.0 > 0)               ? formatter.string(from: NSNumber(value: time.1))! + "h " : ""
-        let minutes = (time.2 > 0 || time.1 > 0 || time.0 > 0) ? formatter.string(from: NSNumber(value: time.2))! + "m" : ""
-        let seconds = (showSeconds) ? " " + formatter.string(from: NSNumber(value: time.3))! + "s" : ""
-        return days + hours + minutes + seconds
+    func formatTime(_ seconds: Int) -> (String) {
+        let time = secondsToTime(abs(seconds))
+        let daysStr    = (time.0 != 0) ? String(time.0) + "d " : ""
+        let hoursStr   = (time.1 != 0 || time.0 != 0)               ? formatter.string(from: NSNumber(value: time.1))! + "h " : ""
+        let minutesStr = (time.2 != 0 || time.1 != 0 || time.0 != 0) ? formatter.string(from: NSNumber(value: time.2))! + "m" : ""
+        let secondsStr = (showSeconds) ? " " + formatter.string(from: NSNumber(value: time.3))! + "s" : ""
+        let suffixStr  = (seconds < 0) ? " ago" : "" // TODO: i18n?
+        return daysStr + hoursStr + minutesStr + secondsStr + suffixStr
     }
 
     // MenuItem click event to toggle showSeconds

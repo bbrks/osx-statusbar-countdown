@@ -1,8 +1,10 @@
-# OS X Statusbar Countdown
+# macOS/OS X Statusbar Countdown
 
-**Deprecated:** Use [BitBar](https://getbitbar.com) with [Countdown plugin](https://getbitbar.com/plugins/Time/countdown.1s.py) instead.
+A utility to count down to a date from your macOS menubar, written in Swift.
 
-A utility to count down to a date from your OS X menubar/statusbar written in Swift.
+The countdown name and date are currently hardcoded. To change, plug in desired values here and recompile:
+
+https://github.com/bbrks/osx-statusbar-countdown/blob/master/StatusbarCountdown/AppDelegate.swift#L17-L18
 
 <img src="http://i.imgur.com/PDQb7VR.png" width="452" alt="OS X Statusbar Countdown" />
 
@@ -12,11 +14,6 @@ Download the binary package from [Releases](https://github.com/bbrks/osx-statusb
 If you encounter issues regarding unknown developer, Ctrl+Click on the .app and then click Open.
 
 Alternatively, clone the repo and compile in Xcode :)
-
-## Roadmap
-
-- [x] v0.1 - Countdown displaying in Statusbar
-- [ ] v0.2 - Configurable date and title
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
