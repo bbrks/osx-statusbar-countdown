@@ -9,14 +9,21 @@
 import Cocoa
 import Foundation
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+protocol SettingsWindowDelegate {
+    func settingsDidUpdate()
+}
 
+@NSApplicationMain
+class AppDelegate: NSObject, NSApplicationDelegate, SettingsWindowDelegate {
+
+    let DEFAULT_NAME = "Countdown Name"
+    let DEFAULT_DATE = NSDate(timeIntervalSince1970: 1597249800)
+    
     // TODO: Remove these hardcoded values (into a plist)
     // TODO: Provide a GUI config to set plist values
-    let countToDate = NSDate(timeIntervalSince1970: 1597249800) // FIXME: Your countdown date here... - 2020-08-04 16:30:00 UTC
-    let countdownName = "Countdown Name"                        // FIXME: Your countdown name here...
-    
+    var countToDate = NSDate(timeIntervalSince1970: 1597249800) // FIXME: Your countdown date here... - 2020-08-04 16:30:00 UTC
+    var countdownName = "Countdown Name"                        // FIXME: Your countdown name here...
+
     var showName = true
     var showSeconds = true
     var zeroPad = false
@@ -29,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         settingsWindow = SettingsWindow()
+        settingsWindow.delegate = self
         
         statusItem.title = ""
         statusItem.menu = statusMenu
@@ -39,6 +47,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                              selector: #selector(tick),
                              userInfo: nil,
                              repeats: true)
+        
+        updateSettings()
+    }
+    
+    func settingsDidUpdate() {
+        updateSettings()
+    }
+    
+    func updateSettings() {
+        let defaults = UserDefaults.standard
+        
+        countdownName = defaults.string(forKey: "name") ?? DEFAULT_NAME
+        countToDate = defaults.value(forKey: "date") as? NSDate ?? DEFAULT_DATE
     }
 
     // Calculates the difference in time from now to the specified date and sets the statusItem title

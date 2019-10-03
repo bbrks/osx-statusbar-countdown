@@ -8,8 +8,13 @@
 
 import Cocoa
 
-class SettingsWindow: NSWindowController {
+class SettingsWindow: NSWindowController, NSWindowDelegate {
 
+    @IBOutlet weak var nameTextField: NSTextField!
+    @IBOutlet weak var datePicker: NSDatePicker!
+    
+    var delegate: SettingsWindowDelegate?
+    
     override func windowDidLoad() {
         super.windowDidLoad()
 
@@ -23,4 +28,17 @@ class SettingsWindow: NSWindowController {
         return "SettingsWindow"
     }
     
+    @IBAction func save(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        
+        defaults.set(nameTextField.stringValue, forKey: "name")
+        defaults.set(datePicker.dateValue, forKey: "date")
+        
+        delegate?.settingsDidUpdate()
+        close()
+    }
+    
+    @IBAction func closePopover(_ sender: Any) {
+        close()
+    }
 }

@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindow" customModule="StatusbarCountdown" customModuleProvider="target">
             <connections>
+                <outlet property="datePicker" destination="i6y-9H-c1y" id="mbU-NU-htQ"/>
+                <outlet property="nameTextField" destination="VRe-dx-RcW" id="bW6-a3-nmz"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -66,6 +68,9 @@
 DQ
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="save:" target="-2" id="3DZ-Of-GPi"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0T5-t9-NG3">
                         <rect key="frame" x="45" y="13" width="82" height="32"/>
@@ -76,6 +81,9 @@ DQ
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="closePopover:" target="-2" id="Fqu-D9-dP6"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -97,7 +105,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="33" y="112"/>
+            <point key="canvasLocation" x="63" y="173"/>
         </window>
     </objects>
 </document>
