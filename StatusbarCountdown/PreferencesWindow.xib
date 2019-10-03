@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindow" customModule="StatusbarCountdown" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindow" customModule="StatusbarCountdown" customModuleProvider="target">
             <connections>
                 <outlet property="dateBadInputFeedback" destination="Etm-xQ-u1i" id="ztE-0l-Ebm"/>
                 <outlet property="datePicker" destination="i6y-9H-c1y" id="mbU-NU-htQ"/>
@@ -17,7 +17,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="307" height="193"/>
@@ -74,7 +74,7 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="save:" target="-2" id="3DZ-Of-GPi"/>
+                            <action selector="validate:" target="-2" id="3DZ-Of-GPi"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0T5-t9-NG3">
@@ -130,7 +130,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="86.5" y="166.5"/>
+            <point key="canvasLocation" x="167" y="129"/>
         </window>
     </objects>
 </document>

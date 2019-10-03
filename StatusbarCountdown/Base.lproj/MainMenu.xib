@@ -38,10 +38,10 @@
                         <action selector="toggleZeroPadWithSender:" target="Voe-Tx-rLC" id="Ipf-z6-8Z2"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Settings" id="gEw-R4-QZI">
+                <menuItem title="Preferences" id="gEw-R4-QZI">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="configureSettings:" target="Voe-Tx-rLC" id="15g-C7-0ee"/>
+                        <action selector="configurePreferences:" target="Voe-Tx-rLC" id="15g-C7-0ee"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="DWl-xP-vrW"/>

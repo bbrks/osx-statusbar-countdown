@@ -9,12 +9,12 @@
 import Cocoa
 import Foundation
 
-protocol SettingsWindowDelegate {
-    func settingsDidUpdate()
+protocol PreferencesWindowDelegate {
+    func preferencesDidUpdate()
 }
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, SettingsWindowDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, PreferencesWindowDelegate {
 
     let DEFAULT_NAME = "Countdown Name"
     let DEFAULT_DATE = NSDate(timeIntervalSince1970: 1597249800)
@@ -30,11 +30,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, SettingsWindowDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: -1)
     @IBOutlet weak var statusMenu: NSMenu!
-    var settingsWindow: SettingsWindow!
+    var preferencesWindow: PreferencesWindow!
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        settingsWindow = SettingsWindow()
-        settingsWindow.delegate = self
+        preferencesWindow = PreferencesWindow()
+        preferencesWindow.delegate = self
         
         statusItem.title = ""
         statusItem.menu = statusMenu
@@ -46,14 +46,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, SettingsWindowDelegate {
                              userInfo: nil,
                              repeats: true)
         
-        updateSettings()
+        updatePreferences()
     }
     
-    func settingsDidUpdate() { // Delegate when setting values are updated
-        updateSettings()
+    func preferencesDidUpdate() { // Delegate when setting values are updated
+        updatePreferences()
     }
     
-    func updateSettings() {
+    func updatePreferences() {
         let defaults = UserDefaults.standard
         
         // Gets the saved values in user defaults
@@ -130,9 +130,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, SettingsWindowDelegate {
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
     }
 
-    // MenuItem click event to open settings popover
-    @IBAction func configureSettings(_ sender: Any) {
-        settingsWindow.showWindow(nil)
+    // MenuItem click event to open preferences popover
+    @IBAction func configurePreferences(_ sender: Any) {
+        preferencesWindow.showWindow(nil)
     }
     
     // MenuItem click event to quit application

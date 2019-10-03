@@ -1,5 +1,5 @@
 //
-//  SettingsWindow.swift
+//  PreferencesWindow.swift
 //  StatusbarCountdown
 //
 //  Created by Jacqueline Alves on 02/10/19.
@@ -8,14 +8,14 @@
 
 import Cocoa
 
-class SettingsWindow: NSWindowController, NSWindowDelegate {
+class PreferencesWindow: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var nameBadInputFeedback: NSTextField!
     @IBOutlet weak var dateBadInputFeedback: NSTextField!
     
-    var delegate: SettingsWindowDelegate?
+    var delegate: PreferencesWindowDelegate?
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -29,25 +29,38 @@ class SettingsWindow: NSWindowController, NSWindowDelegate {
     }
     
     override var windowNibName : String! {
-        return "SettingsWindow"
+        return "PreferencesWindow"
     }
     
-    @IBAction func save(_ sender: Any) {
+    func save() {
+        let defaults = UserDefaults.standard
+        
+        defaults.set(nameTextField.stringValue, forKey: "name")
+        defaults.set(datePicker.dateValue, forKey: "date")
+        
+        delegate?.preferencesDidUpdate()
+    }
+    
+    @IBAction func validate(_ sender: Any) {
+        var validation = true
+        
         if nameTextField.stringValue.trimmingCharacters(in: .whitespacesAndNewlines) == "" { // Check if name is empty
             nameBadInputFeedback.isHidden = false
             window?.shakeWindow()
             
-        } else if datePicker.dateValue < Date() { // Check if date is after today
+            validation = false
+            
+        }
+        
+        if datePicker.dateValue < Date() { // Check if date is after today
             dateBadInputFeedback.isHidden = false
             window?.shakeWindow()
             
-        } else { // Everything is ok, save values to user defaults
-            let defaults = UserDefaults.standard
-            
-            defaults.set(nameTextField.stringValue, forKey: "name")
-            defaults.set(datePicker.dateValue, forKey: "date")
-            
-            delegate?.settingsDidUpdate()
+            validation = false
+        }
+        
+        if validation { // Everything is ok, save values to user defaults and close popover
+            save()
             close()
         }
     }
@@ -61,7 +74,7 @@ class SettingsWindow: NSWindowController, NSWindowDelegate {
     }
 }
 
-extension SettingsWindow: NSTextFieldDelegate {
+extension PreferencesWindow: NSTextFieldDelegate {
     func controlTextDidChange(_ obj: Notification) {
         nameBadInputFeedback.isHidden = true // Hide bad input feedback when something is entered on textfield
     }
