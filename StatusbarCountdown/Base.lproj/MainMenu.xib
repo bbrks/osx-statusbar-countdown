@@ -40,6 +40,9 @@
                 </menuItem>
                 <menuItem title="Settings" id="gEw-R4-QZI">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="configureSettings:" target="Voe-Tx-rLC" id="15g-C7-0ee"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="DWl-xP-vrW"/>
                 <menuItem title="Quit" id="SeC-Z9-3ew">

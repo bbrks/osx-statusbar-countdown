@@ -62,6 +62,9 @@
                         <buttonCell key="cell" type="push" title="Save and Start" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="EtY-95-7pN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0T5-t9-NG3">

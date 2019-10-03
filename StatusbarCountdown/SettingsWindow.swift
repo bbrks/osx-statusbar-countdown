@@ -13,7 +13,14 @@ class SettingsWindow: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        self.window?.center() // Center the popover
+        self.window?.makeKeyAndOrderFront(nil) // Make popover appear on top of anything else
+        
+        NSApp.activate(ignoringOtherApps: true) // Activate popover
+    }
+    
+    override var windowNibName : String! {
+        return "SettingsWindow"
     }
     
 }

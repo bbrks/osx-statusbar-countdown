@@ -25,8 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: -1)
     @IBOutlet weak var statusMenu: NSMenu!
-    
+    var settingsWindow: SettingsWindow!
+
     func applicationDidFinishLaunching(_ notification: Notification) {
+        settingsWindow = SettingsWindow()
+        
         statusItem.title = ""
         statusItem.menu = statusMenu
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
@@ -107,6 +110,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
     }
 
+    // MenuItem click event to open settings popover
+    @IBAction func configureSettings(_ sender: Any) {
+        settingsWindow.showWindow(nil)
+    }
+    
     // MenuItem click event to quit application
     @IBAction func quitApplication(sender: NSMenuItem) {
         NSApplication.shared.terminate(self);
