@@ -53,7 +53,7 @@ class SettingsWindow: NSWindowController, NSWindowDelegate {
     }
     
     @IBAction func changeDatePicker(_ sender: Any) {
-        dateBadInputFeedback.isHidden = true
+        dateBadInputFeedback.isHidden = true // Hide bad input feedback when change the date
     }
     
     @IBAction func closePopover(_ sender: Any) {
@@ -63,6 +63,6 @@ class SettingsWindow: NSWindowController, NSWindowDelegate {
 
 extension SettingsWindow: NSTextFieldDelegate {
     func controlTextDidChange(_ obj: Notification) {
-        nameBadInputFeedback.isHidden = true
+        nameBadInputFeedback.isHidden = true // Hide bad input feedback when something is entered on textfield
     }
 }

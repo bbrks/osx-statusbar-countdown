@@ -19,10 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, SettingsWindowDelegate {
     let DEFAULT_NAME = "Countdown Name"
     let DEFAULT_DATE = NSDate(timeIntervalSince1970: 1597249800)
     
-    // TODO: Remove these hardcoded values (into a plist)
-    // TODO: Provide a GUI config to set plist values
-    var countToDate = NSDate(timeIntervalSince1970: 1597249800) // FIXME: Your countdown date here... - 2020-08-04 16:30:00 UTC
-    var countdownName = "Countdown Name"                        // FIXME: Your countdown name here...
+    var countToDate = NSDate(timeIntervalSince1970: 1597249800)
+    var countdownName = "Countdown Name"
 
     var showName = true
     var showSeconds = true
@@ -51,13 +49,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, SettingsWindowDelegate {
         updateSettings()
     }
     
-    func settingsDidUpdate() {
+    func settingsDidUpdate() { // Delegate when setting values are updated
         updateSettings()
     }
     
     func updateSettings() {
         let defaults = UserDefaults.standard
         
+        // Gets the saved values in user defaults
         countdownName = defaults.string(forKey: "name") ?? DEFAULT_NAME
         countToDate = defaults.value(forKey: "date") as? NSDate ?? DEFAULT_DATE
     }
