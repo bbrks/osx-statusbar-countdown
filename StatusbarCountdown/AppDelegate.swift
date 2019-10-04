@@ -9,14 +9,19 @@
 import Cocoa
 import Foundation
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+protocol PreferencesWindowDelegate {
+    func preferencesDidUpdate()
+}
 
-    // TODO: Remove these hardcoded values (into a plist)
-    // TODO: Provide a GUI config to set plist values
-    let countToDate = NSDate(timeIntervalSince1970: 1597249800) // FIXME: Your countdown date here... - 2020-08-04 16:30:00 UTC
-    let countdownName = "Countdown Name"                        // FIXME: Your countdown name here...
+@NSApplicationMain
+class AppDelegate: NSObject, NSApplicationDelegate, PreferencesWindowDelegate {
+
+    let DEFAULT_NAME = "Countdown Name"
+    let DEFAULT_DATE = NSDate(timeIntervalSince1970: 1597249800)
     
+    var countToDate = NSDate(timeIntervalSince1970: 1597249800)
+    var countdownName = "Countdown Name"
+
     var showName = true
     var showSeconds = true
     var zeroPad = false
@@ -25,8 +30,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: -1)
     @IBOutlet weak var statusMenu: NSMenu!
-    
+    var preferencesWindow: PreferencesWindow!
+
     func applicationDidFinishLaunching(_ notification: Notification) {
+        preferencesWindow = PreferencesWindow()
+        preferencesWindow.delegate = self
+        
         statusItem.title = ""
         statusItem.menu = statusMenu
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
@@ -36,6 +45,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                              selector: #selector(tick),
                              userInfo: nil,
                              repeats: true)
+        
+        updatePreferences()
+    }
+    
+    func preferencesDidUpdate() { // Delegate when setting values are updated
+        updatePreferences()
+    }
+    
+    func updatePreferences() {
+        let defaults = UserDefaults.standard
+        
+        // Gets the saved values in user defaults
+        countdownName = defaults.string(forKey: "name") ?? DEFAULT_NAME
+        countToDate = defaults.value(forKey: "date") as? NSDate ?? DEFAULT_DATE
     }
 
     // Calculates the difference in time from now to the specified date and sets the statusItem title
@@ -107,6 +130,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
     }
 
+    // MenuItem click event to open preferences popover
+    @IBAction func configurePreferences(_ sender: Any) {
+        preferencesWindow.showWindow(nil)
+    }
+    
     // MenuItem click event to quit application
     @IBAction func quitApplication(sender: NSMenuItem) {
         NSApplication.shared.terminate(self);

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17E0B24A2344BC4400D83311 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0B2482344BC4400D83311 /* PreferencesWindow.swift */; };
+		17E0B24B2344BC4400D83311 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E0B2492344BC4400D83311 /* PreferencesWindow.xib */; };
+		17E0B24D23457B6500D83311 /* ShakeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0B24C23457B6500D83311 /* ShakeWindow.swift */; };
 		B57B8F4E1ACB590D00BD794F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B8F4D1ACB590D00BD794F /* AppDelegate.swift */; };
 		B57B8F501ACB590D00BD794F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57B8F4F1ACB590D00BD794F /* Images.xcassets */; };
 		B57B8F531ACB590D00BD794F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57B8F511ACB590D00BD794F /* MainMenu.xib */; };
@@ -24,6 +27,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17E0B2482344BC4400D83311 /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
+		17E0B2492344BC4400D83311 /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		17E0B24C23457B6500D83311 /* ShakeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeWindow.swift; sourceTree = "<group>"; };
 		B57B8F481ACB590D00BD794F /* StatusbarCountdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusbarCountdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57B8F4C1ACB590D00BD794F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B57B8F4D1ACB590D00BD794F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +82,9 @@
 				B57B8F4D1ACB590D00BD794F /* AppDelegate.swift */,
 				B57B8F4F1ACB590D00BD794F /* Images.xcassets */,
 				B57B8F511ACB590D00BD794F /* MainMenu.xib */,
+				17E0B2482344BC4400D83311 /* PreferencesWindow.swift */,
+				17E0B2492344BC4400D83311 /* PreferencesWindow.xib */,
+				17E0B24C23457B6500D83311 /* ShakeWindow.swift */,
 				B57B8F4B1ACB590D00BD794F /* Supporting Files */,
 			);
 			path = StatusbarCountdown;
@@ -167,6 +176,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -188,6 +198,7 @@
 			files = (
 				B57B8F501ACB590D00BD794F /* Images.xcassets in Resources */,
 				B57B8F531ACB590D00BD794F /* MainMenu.xib in Resources */,
+				17E0B24B2344BC4400D83311 /* PreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +216,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E0B24D23457B6500D83311 /* ShakeWindow.swift in Sources */,
+				17E0B24A2344BC4400D83311 /* PreferencesWindow.swift in Sources */,
 				B57B8F4E1ACB590D00BD794F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
