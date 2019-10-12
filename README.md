@@ -2,7 +2,7 @@
 
 A utility to count down to a date from your macOS menubar, written in Swift.
 
-<img src="https://i.imgur.com/ajJJ9lw.png" width="531" alt="macOS/OS X Statusbar Countdown" />
+<img src="https://i.imgur.com/QodmxKp.png" height="451" alt="macOS/OS X Statusbar Countdown" />
 
 ## Installation
 Download the binary package from [Releases](https://github.com/bbrks/osx-statusbar-countdown/releases) and run.
