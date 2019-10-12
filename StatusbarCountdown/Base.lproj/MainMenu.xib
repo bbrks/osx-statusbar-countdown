@@ -38,6 +38,7 @@
                         <action selector="toggleZeroPadWithSender:" target="Voe-Tx-rLC" id="Ipf-z6-8Z2"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="W0a-71-nza"/>
                 <menuItem title="Preferences" id="gEw-R4-QZI">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, PreferencesWindowDelegate {
         statusItem.menu = statusMenu
         formatter.minimumIntegerDigits = zeroPad ? 2 : 1
 
-        Timer.scheduledTimer(timeInterval: 0.16, // 16ms ~ 60fps
+        Timer.scheduledTimer(timeInterval: 0.33, // 33ms ~ 30fps
                              target: self,
                              selector: #selector(tick),
                              userInfo: nil,

@@ -23,6 +23,8 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
         self.window?.center() // Center the popover
         self.window?.makeKeyAndOrderFront(nil) // Make popover appear on top of anything else
         
+        datePicker.dateValue = Date()
+
         NSApp.activate(ignoringOtherApps: true) // Activate popover
         
         nameTextField.delegate = self
